@@ -1,6 +1,6 @@
 # Weather History API
 
-A RESTful API designed to archive and present weather data alongside significant historical events. This project is developed exclusively as a showcase for Golang skills.
+A RESTful API developed in Go, designed to archive and present weather data alongside historical events. This project is developed exclusively as a portfolio project to showcase my Golang skills. 
 
 ## Features
 
