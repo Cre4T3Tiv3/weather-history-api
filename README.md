@@ -9,6 +9,19 @@ A RESTful API designed to archive and present weather data alongside significant
 - Search and analytics functionalities.
 - And more as development progresses...
 
+## Documentation
+
+For a detailed guide on setting up, using, and contributing to this project, please refer to our [Wiki](https://github.com/Cre4T3Tiv3/weather-history-api/wiki).
+
 ## How to Use
 
-[Instructions will go here as the project progresses]
+Detailed usage instructions, including setup and example requests, can be found in the [Wiki](https://github.com/Cre4T3Tiv3/weather-history-api/wiki#usage-examples).
+
+## Getting Involved
+
+Interested in contributing or have suggestions? Check the [Wiki](https://github.com/Cre4T3Tiv3/weather-history-api/wiki#contributing) for our contribution guidelines or open an issue to start a discussion.
+
+## Feedback
+
+Your feedback is valuable! If you have comments, issues, or just want to say hi, please do.
+
