@@ -1,11 +1,14 @@
 package models
 
-import "time"
+import (
+	"time"
+)
 
-// Weather represents a weather data model.
 type Weather struct {
-	ID          int       `json:"id"`          // Unique identifier for the weather record.
-	Date        time.Time `json:"date"`        // Date and time of the weather data.
-	Location    string    `json:"location"`    // Location for which the weather data is recorded.
-	Temperature float64   `json:"temperature"` // Temperature recorded at the location.
+	ID          uint      `gorm:"primaryKey"` // Define ID as the primary key
+	Date        time.Time `json:"date"`
+	Location    string    `gorm:"uniqueIndex;not null"` // Define a unique index on Location
+	Temperature float64   `json:"temperature"`
+	CreatedAt   time.Time // These fields are automatically populated by GORM
+	UpdatedAt   time.Time
 }
