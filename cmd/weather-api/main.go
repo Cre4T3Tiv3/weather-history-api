@@ -11,6 +11,18 @@ import (
 	"weather-history-api/models"
 )
 
+var logger *log.Logger
+
+func init() {
+	// Initialize the logger.
+	logFile, err := os.OpenFile("logs/app.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	if err != nil {
+		log.Fatalf("Error opening or creating log file: %v", err)
+	}
+	// Create a logger instance to write logs to the file.
+	logger = log.New(logFile, "", log.LstdFlags|log.Lshortfile)
+}
+
 // loadConfig loads the configuration from a JSON file.
 func loadConfig() (configs.Config, error) {
 	var config configs.Config
@@ -33,7 +45,7 @@ func main() {
 	// Load configuration.
 	config, err := loadConfig()
 	if err != nil {
-		log.Fatal("Error loading configuration:", err)
+		logger.Fatal("Error loading configuration:", err)
 	}
 
 	// Initialize the database connection using the configuration values.
@@ -44,13 +56,13 @@ func main() {
 
 	// Start the API server.
 	http.Handle("/", r)
-	log.Println("Starting server on port 8080...")
-	log.Fatal(http.ListenAndServe(":8080", r))
+	logger.Println("Starting server on port 8080...")
+	logger.Fatal(http.ListenAndServe(":8080", r))
 }
 
 func MigrateSchema() {
 	err := db.DB.AutoMigrate(&models.Weather{})
 	if err != nil {
-		log.Fatal("Schema migration failed:", err)
+		logger.Fatal("Schema migration failed:", err)
 	}
 }

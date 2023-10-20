@@ -113,6 +113,7 @@ func DeleteWeather(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusNoContent)
 }
 
+// SetupRoutes sets up the API routes using the gorilla/mux router.
 func SetupRoutes() *mux.Router {
 	r := mux.NewRouter()
 	r.HandleFunc("/api/weather", CreateWeather).Methods("POST")
@@ -122,14 +123,14 @@ func SetupRoutes() *mux.Router {
 	return r
 }
 
-// Utility function to send JSON response
+// Utility function to send JSON response.
 func jsonResponse(w http.ResponseWriter, data interface{}, statusCode int) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(statusCode)
 	json.NewEncoder(w).Encode(data)
 }
 
-// Utility function to handle HTTP errors
+// Utility function to handle HTTP errors.
 func httpError(w http.ResponseWriter, message string, err error, statusCode int) {
 	if err != nil {
 		log.Println(message+":", err)
