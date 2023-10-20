@@ -8,6 +8,7 @@ import (
 	"weather-history-api/configs"
 	"weather-history-api/db"
 	"weather-history-api/handlers"
+	"weather-history-api/models"
 )
 
 // loadConfig loads the configuration from a JSON file.
@@ -45,4 +46,11 @@ func main() {
 	http.Handle("/", r)
 	log.Println("Starting server on port 8080...")
 	log.Fatal(http.ListenAndServe(":8080", r))
+}
+
+func MigrateSchema() {
+	err := db.DB.AutoMigrate(&models.Weather{})
+	if err != nil {
+		log.Fatal("Schema migration failed:", err)
+	}
 }

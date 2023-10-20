@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
+	"strings"
 	"weather-history-api/db"
 	"weather-history-api/models"
 
@@ -33,9 +34,14 @@ func CreateWeather(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Insert the new weather record into the database.
-	if err := db.InsertWeather(&weather); err != nil {
-		log.Println("Error inserting into database:", err)
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+	if err := db.DB.Create(&weather).Error; err != nil {
+		if strings.Contains(err.Error(), "idx_weathers_location") {
+			log.Println("Duplicate entry for location:", weather.Location)
+			http.Error(w, "Weather data already exists for this location.", http.StatusBadRequest)
+		} else {
+			log.Println("Error inserting into database:", err)
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+		}
 		return
 	}
 
@@ -50,32 +56,63 @@ func CreateWeather(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Error encoding response", http.StatusInternalServerError)
 		return
 	}
-
+	jsonResponse(w, weather, http.StatusCreated)
 	log.Println("Response sent successfully.")
 }
 
-// GetWeather handles HTTP GET requests for weather records.
 func GetWeather(w http.ResponseWriter, r *http.Request) {
 	log.Println("Received GET request for weather records.")
-	// Temporary response for stubbed-out handler.
-	w.Write([]byte("GET handler not implemented yet."))
+
+	var weathers []models.Weather
+	if err := db.DB.Find(&weathers).Error; err != nil {
+		httpError(w, "Error fetching weather records", err, http.StatusInternalServerError)
+		return
+	}
+
+	jsonResponse(w, weathers, http.StatusOK)
 }
 
-// UpdateWeather handles HTTP PUT requests to update weather records.
 func UpdateWeather(w http.ResponseWriter, r *http.Request) {
 	log.Println("Received PUT request to update weather record.")
-	// Temporary response for stubbed-out handler.
-	w.Write([]byte("PUT handler not implemented yet."))
+
+	params := mux.Vars(r)
+	id := params["id"]
+
+	var weather models.Weather
+	if err := db.DB.First(&weather, id).Error; err != nil {
+		httpError(w, "Record not found", err, http.StatusNotFound)
+		return
+	}
+
+	err := json.NewDecoder(r.Body).Decode(&weather)
+	if err != nil {
+		httpError(w, "Error decoding request body", err, http.StatusBadRequest)
+		return
+	}
+
+	if err := db.DB.Save(&weather).Error; err != nil {
+		httpError(w, "Error updating record", err, http.StatusInternalServerError)
+		return
+	}
+
+	jsonResponse(w, weather, http.StatusOK)
 }
 
-// DeleteWeather handles HTTP DELETE requests to delete weather records.
 func DeleteWeather(w http.ResponseWriter, r *http.Request) {
 	log.Println("Received DELETE request for weather record.")
-	// Temporary response for stubbed-out handler.
-	w.Write([]byte("DELETE handler not implemented yet."))
+
+	params := mux.Vars(r)
+	id := params["id"]
+
+	var weather models.Weather
+	if err := db.DB.Delete(&weather, id).Error; err != nil {
+		httpError(w, "Error deleting record", err, http.StatusInternalServerError)
+		return
+	}
+
+	w.WriteHeader(http.StatusNoContent)
 }
 
-// SetupRoutes configures and returns the router with API routes.
 func SetupRoutes() *mux.Router {
 	r := mux.NewRouter()
 	r.HandleFunc("/api/weather", CreateWeather).Methods("POST")
@@ -83,4 +120,21 @@ func SetupRoutes() *mux.Router {
 	r.HandleFunc("/api/weather/{id}", UpdateWeather).Methods("PUT")
 	r.HandleFunc("/api/weather/{id}", DeleteWeather).Methods("DELETE")
 	return r
+}
+
+// Utility function to send JSON response
+func jsonResponse(w http.ResponseWriter, data interface{}, statusCode int) {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(statusCode)
+	json.NewEncoder(w).Encode(data)
+}
+
+// Utility function to handle HTTP errors
+func httpError(w http.ResponseWriter, message string, err error, statusCode int) {
+	if err != nil {
+		log.Println(message+":", err)
+	} else {
+		log.Println(message)
+	}
+	http.Error(w, message, statusCode)
 }
