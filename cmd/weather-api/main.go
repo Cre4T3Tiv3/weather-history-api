@@ -56,6 +56,7 @@ func main() {
 
 	// Start the API server.
 	http.Handle("/", r)
+	log.Println("Starting server on port 8080...")
 	logger.Println("Starting server on port 8080...")
 	logger.Fatal(http.ListenAndServe(":8080", r))
 }

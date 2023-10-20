@@ -2,6 +2,7 @@ package db
 
 import (
 	"log"
+	"os"
 	"weather-history-api/configs"
 	"weather-history-api/models"
 
@@ -10,6 +11,17 @@ import (
 )
 
 var DB *gorm.DB
+var logger *log.Logger
+
+func init() {
+	// Initialize the logger.
+	logFile, err := os.OpenFile("logs/app.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	if err != nil {
+		log.Fatalf("Error opening or creating log file: %v", err)
+	}
+	// Create a logger instance to write logs to the file.
+	logger = log.New(logFile, "", log.LstdFlags|log.Lshortfile)
+}
 
 // InitDB initializes the database connection using the provided configuration.
 func InitDB(config configs.Config) {
@@ -23,7 +35,7 @@ func InitDB(config configs.Config) {
 		log.Fatal(err)
 	}
 	log.Println("Database successfully connected!")
-
+	logger.Println("Database successfully connected!")
 	// Auto migration for Weather model.
 	DB.AutoMigrate(&models.Weather{})
 }
