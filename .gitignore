@@ -1,24 +1,41 @@
-# If you prefer the allow list template instead of the deny list, see community template:
-# https://github.com/github/gitignore/blob/main/community/Golang/Go.AllowList.gitignore
-#
-# Binaries for programs and plugins
+# Binaries for Programs and Plugins:
 *.exe
 *.exe~
 *.dll
 *.so
 *.dylib
 
-# Test binary, built with `go test -c`
+# Test Binary, Built with `go test -c`:
 *.test
 
-# Output of the go coverage tool, specifically when used with LiteIDE
+# Output of the Go Coverage Tool, Specifically When Used with LiteIDE:
 *.out
 
-# Dependency directories (remove the comment below to include it)
+# Dependency Directories (Remove the Comment Below to Include It)
 # vendor/
 
-# Go workspace file
+# Go Workspace File:
 go.work
 
-# Ignore config files
+# The Local Development Env-Var JSON Config File:
 /configs/config.json
+
+# Local Directory Containing Log Files:
+/logs/*
+
+# macOS Desktop Services Store Files:
+.DS_Store
+
+# Local Visual Studio Code Configs, Settings, etc.
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# Local History for Visual Studio Code:
+.history/
+
+# Built Visual Studio Code Extensions:
+*.vsix
