@@ -12,7 +12,7 @@ A RESTful API developed in Go, designed to archive and present weather data alon
 
 ## Documentation
 
-For a detailed guide on setting up, using, and contributing to this project, please refer to our [Wiki](https://github.com/Cre4T3Tiv3/weather-history-api/wiki).
+For a detailed guide on setting up, using, and contributing to this project, please refer to the [Wiki](https://github.com/Cre4T3Tiv3/weather-history-api/wiki).
 
 ## How to Use
 
@@ -20,7 +20,7 @@ Detailed usage instructions, including setup and example requests, can be found 
 
 ## Getting Involved
 
-Interested in contributing or have suggestions? Check the [Wiki](https://github.com/Cre4T3Tiv3/weather-history-api/wiki#contributing) for our contribution guidelines or open an issue to start a discussion.
+Interested in contributing or have suggestions? Check the [Wiki](https://github.com/Cre4T3Tiv3/weather-history-api/wiki#contributing) for the contribution guidelines or open an issue to start a discussion.
 
 ## Feedback
 
