@@ -42,7 +42,20 @@ func main() {
 	r := handlers.SetupRoutes()
 
 	http.Handle("/", r)
+<<<<<<< HEAD
 	localLogger.Println("Starting server on port 8080...")
 	logger.Info.Println("Starting server on port 8080...")
 	logger.Error.Fatal(http.ListenAndServe(":8080", r))
+=======
+	log.Println("Starting server on port 8080...")
+	logger.Println("Starting server on port 8080...")
+	logger.Fatal(http.ListenAndServe(":8080", r))
+}
+
+func MigrateSchema() {
+	err := db.DB.AutoMigrate(&models.Weather{})
+	if err != nil {
+		logger.Fatal("Schema migration failed:", err)
+	}
+>>>>>>> main
 }
