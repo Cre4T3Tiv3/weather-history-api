@@ -43,6 +43,7 @@ func main() {
 
 	http.Handle("/", r)
 <<<<<<< HEAD
+<<<<<<< HEAD
 	localLogger.Println("Starting server on port 8080...")
 	logger.Info.Println("Starting server on port 8080...")
 	logger.Error.Fatal(http.ListenAndServe(":8080", r))
@@ -58,4 +59,9 @@ func MigrateSchema() {
 		logger.Fatal("Schema migration failed:", err)
 	}
 >>>>>>> main
+=======
+	localLogger.Println("Starting server on port 8080...")
+	logger.Info.Println("Starting server on port 8080...")
+	logger.Error.Fatal(http.ListenAndServe(":8080", r))
+>>>>>>> c71250f ((feat): Implement enhanced database integration and error handling)
 }
