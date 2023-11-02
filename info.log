@@ -1,7 +1,0 @@
-INFO: 2023/11/02 16:58:43 database.go:25: Database successfully connected!
-INFO: 2023/11/02 16:58:43 main.go:45: Starting server on port 8080...
-INFO: 2023/11/02 16:58:47 weather_handlers.go:68: Received GET request for all weather records.
-INFO: 2023/11/02 16:58:54 weather_handlers.go:17: Received POST request to /api/weather.
-INFO: 2023/11/02 16:58:54 weather_handlers.go:31: Parsed weather data: {0 2023-10-27 10:00:00 +0000 UTC State-3 32 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC}
-INFO: 2023/11/02 16:58:54 weather_handlers.go:52: Successfully inserted weather data into the database.
-INFO: 2023/11/02 16:58:54 weather_handlers.go:64: Response sent successfully.
