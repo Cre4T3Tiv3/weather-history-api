@@ -14,7 +14,8 @@ type Config struct {
 
 func LoadConfig() (Config, error) {
 	viper.SetConfigName("config")
-	viper.AddConfigPath(".")
+	viper.SetConfigType("json")      // specify the file type
+	viper.AddConfigPath("./configs") // adjust path if the config file is inside the 'configs' directory
 
 	if err := viper.ReadInConfig(); err != nil {
 		return Config{}, err
