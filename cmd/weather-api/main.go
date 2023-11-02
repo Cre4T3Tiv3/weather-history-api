@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 	"os"
 	"weather-history-api/configs"
@@ -42,6 +43,18 @@ func main() {
 	r := handlers.SetupRoutes()
 
 	http.Handle("/", r)
-	logger.Info.Println("Starting server on port 8080...")
-	logger.Error.Fatal(http.ListenAndServe(":8080", r))
+
+	port := config.Port
+	if port == "" {
+		port = "8080" // default port if not provided in config
+	}
+
+	host, err := os.Hostname()
+	if err != nil {
+		logger.Error.Fatal("Unable to determine hostname:", err)
+	}
+
+	logger.Info.Printf("Starting server on http://%s:%s...", host, port)
+	logger.Error.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", port), r))
+
 }

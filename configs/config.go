@@ -1,15 +1,15 @@
 package configs
 
-// Config represents the configuration structure for the application.
-
 import (
 	"github.com/spf13/viper"
 )
 
+// Config represents the configuration structure for the application.
 type Config struct {
-	DBUser     string // DBUser is the username for the database connection.
-	DBName     string // DBName is the name of the database.
-	DBPassword string // DBPassword is the password for the database connection.
+	DBUser     string `json:"dbUser"`     // DBUser is the username for the database connection.
+	DBName     string `json:"dbName"`     // DBName is the name of the database.
+	DBPassword string `json:"dbPassword"` // DBPassword is the password for the database connection.
+	Port       string `json:"port"`       // Port on which the server should run.
 }
 
 func LoadConfig() (Config, error) {
