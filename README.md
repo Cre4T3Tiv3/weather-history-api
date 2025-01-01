@@ -22,7 +22,7 @@ The Weather History API, developed in Go, archives and presents historical weath
 
 ---
 
-## 🔥 Features
+## <a id="features"></a>🔥 Features
 
 - CRUD operations for weather data on specific dates.
 - Integration of historical events with weather data.
@@ -31,7 +31,7 @@ The Weather History API, developed in Go, archives and presents historical weath
 
 ---
 
-## 🚀 Quick Start
+## <a id="quick-start"></a>🚀 Quick Start
 
 ### Prerequisites
 - **Golang**: Latest stable version.
@@ -74,7 +74,7 @@ For troubleshooting or advanced setup details, refer to the [Wiki Setup Guide](h
 
 ---
 
-## 📡 API Endpoints
+## <a id="api-endpoints"></a>📡 API Endpoints
 
 ### Add Weather Data
 ```bash
@@ -94,12 +94,13 @@ For a complete list of API endpoints and advanced usage examples, visit the [API
 
 ---
 
-## 📖 Detailed Setup Guide
+## <a id="detailed-setup-guide"></a>📖 Detailed Setup Guide
+
 For an in-depth setup tutorial, including PostgreSQL configuration and troubleshooting, visit the [Setup Guide in the Wiki](https://github.com/Cre4T3Tiv3/weather-history-api/wiki/Setup-Guide).
 
 ---
 
-## 📘 Advanced Documentation
+## <a id="advanced-documentation"></a>📘 Advanced Documentation
 
 Explore detailed documentation for:
 - [Error Handling](https://github.com/Cre4T3Tiv3/weather-history-api/wiki/Error-Handling)
@@ -109,7 +110,8 @@ Explore detailed documentation for:
 
 ---
 
-## 🤝 Contributing
+## <a id="contributing"></a>🤝 Contributing
+
 Contributions are welcome! Here’s how to get started:
 1. Fork this repository.
 2. Create a new branch:
@@ -139,14 +141,16 @@ For detailed contribution guidelines, visit the [Wiki Contributing Section](http
 
 ---
 
-## 💡 Future Enhancements
+## <a id="future-enhancements"></a>💡 Future Enhancements
+
 - Unit and integration tests.
 - CI/CD pipelines with Jenkins or GitHub Actions.
 - Additional endpoints for analytics (e.g., temperature trends).
 
 ---
 
-## 📜 License
+## <a id="license"></a>📜 License
+
 This project is licensed under the [MIT License](LICENSE).
 
 ---
