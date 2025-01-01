@@ -30,6 +30,7 @@ The Weather History API, developed in Go, archives and presents historical weath
 - Ongoing development for additional features.
 
 ---
+
 ## <a id="quick-start"></a>🚀 Quick Start
 
 ### Prerequisites
@@ -72,6 +73,7 @@ The Weather History API, developed in Go, archives and presents historical weath
 For troubleshooting or advanced setup details, refer to the [Wiki Setup Guide](https://github.com/Cre4T3Tiv3/weather-history-api/wiki/Setup-Guide).
 
 ---
+
 ## <a id="api-endpoints"></a>📡 API Endpoints
 
 ### Add Weather Data
@@ -91,11 +93,13 @@ curl http://localhost:8080/weather?date=2023-10-19
 For a complete list of API endpoints and advanced usage examples, visit the [API Documentation in the Wiki](https://github.com/Cre4T3Tiv3/weather-history-api/wiki/API-Documentation).
 
 ---
+
 ## <a id="detailed-setup-guide"></a>📖 Detailed Setup Guide
 
 For an in-depth setup tutorial, including PostgreSQL configuration and troubleshooting, visit the [Setup Guide in the Wiki](https://github.com/Cre4T3Tiv3/weather-history-api/wiki/Setup-Guide).
 
 ---
+
 ## <a id="advanced-documentation"></a>📘 Advanced Documentation
 
 Explore detailed documentation for:
@@ -105,6 +109,7 @@ Explore detailed documentation for:
 - [FAQs](https://github.com/Cre4T3Tiv3/weather-history-api/wiki/FAQs)
 
 ---
+
 ## <a id="contributing"></a>🤝 Contributing
 
 Contributions are welcome! Here’s how to get started:
@@ -135,6 +140,7 @@ Contributions are welcome! Here’s how to get started:
 For detailed contribution guidelines, visit the [Wiki Contributing Section](https://github.com/Cre4T3Tiv3/weather-history-api/wiki/Contributing).
 
 ---
+
 ## <a id="future-enhancements"></a>💡 Future Enhancements
 
 - Unit and integration tests.
@@ -142,6 +148,7 @@ For detailed contribution guidelines, visit the [Wiki Contributing Section](http
 - Additional endpoints for analytics (e.g., temperature trends).
 
 ---
+
 ## <a id="license"></a>📜 License
 
 This project is licensed under the [MIT License](LICENSE).
